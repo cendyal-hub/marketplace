@@ -18,7 +18,7 @@ class GoogleSignInButton extends StatelessWidget {
         style: OutlinedButton.styleFrom(
           backgroundColor: Colors.white,
           side: BorderSide(color: Colors.grey.shade300),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         ),
         child: isLoading
             ? const SizedBox(
@@ -29,7 +29,7 @@ class GoogleSignInButton extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // Logo Google — download dari: fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg
-                  Image.asset('assets/icons/google_logo.png', height: 22),
+                  Image.asset('assets/icons/google.png', height: 22),
                   const SizedBox(width: 12),
                   const Text(
                     'Lanjutkan dengan Google',

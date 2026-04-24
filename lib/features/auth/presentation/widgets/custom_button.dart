@@ -44,18 +44,19 @@ class CustomButton extends StatelessWidget {
         ButtonVariant.primary => ElevatedButton(
             onPressed: isLoading ? null : onPressed,
             style: ElevatedButton.styleFrom(
-               backgroundColor: const Color(0xFF1565C0),
+              backgroundColor: const Color(0xFF111111), // Hitam pekat
               foregroundColor: Colors.white,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-              elevation: 2,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+              elevation: 0,
             ),
             child: child,
           ),
         ButtonVariant.outlined => OutlinedButton(
             onPressed: isLoading ? null : onPressed,
             style: OutlinedButton.styleFrom(
-              side: const BorderSide(color: Color(0xFF1565C0), width: 1.5),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+              side: const BorderSide(color: Color(0xFF111111), width: 1.5),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(7)),
+              foregroundColor: const Color(0xFF111111),
             ),
             child: child,
           ),

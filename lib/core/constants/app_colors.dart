@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const Color primary = Color(0xFF1565C0);
-  static const Color primaryLight = Color(0xFF1E88E5);
-  static const Color primaryDark = Color(0xFF0D47A1);
-  static const Color accent = Color(0xFF42A5F5);
+  // Tema Nike Store Elegan (Hitam & Abu-abu)
+  static const Color primary = Color(0xFF111111);      // Hitam pekat
+  static const Color primaryLight = Color(0xFF222222); // Abu-abu gelap
+  static const Color primaryDark = Colors.black;       // Hitam murni
+  static const Color accent = Color(0xFF757575);       // Abu-abu netral
 
-  static const Color background = Color(0xFFF5F5F5);
-  static const Color surface = Colors.white;
-  static const Color error = Colors.red;
-  
-  static const Color textPrimary = Color(0xFF212121);
-  static const Color textSecondary = Color(0xFF757575);
-  static const Color textHint = Color(0xFFBDBDBD);
-  
-  static const Color divider = Color(0xFFE0E0E0);
+  static const Color background = Color(0xFFF9F9F9);   // Off-white background
+  static const Color surface = Colors.white;           // Putih untuk card/form
+  static const Color error = Color(0xFFD32F2F);        // Merah gelap
+
+  static const Color textPrimary = Color(0xFF111111);  // Hitam
+  static const Color textSecondary = Color(0xFF757575);// Abu-abu teks
+  static const Color textHint = Color(0xFF9E9E9E);     // Abu-abu terang
+
+  static const Color divider = Color(0xFFEEEEEE);
   static const Color border = Color(0xFFE0E0E0);
 }
