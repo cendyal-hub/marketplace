@@ -132,7 +132,7 @@ Komunikasi dengan backend ditangani secara profesional menggunakan **Dio**:
 
 ## 🎥 Video Demonstration
 
-[![Marketplace Demo](https://youtu.be/BqcNfZU4iBA)
+https://youtu.be/BqcNfZU4iBA
 
 
 ## 📦 Struktur Dependency (`pubspec.yaml`)
