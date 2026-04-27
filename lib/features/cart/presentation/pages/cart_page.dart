@@ -135,7 +135,7 @@ class CartPage extends StatelessWidget {
                     color: AppColors.textSecondary, fontSize: 14),
               ),
               Text(
-                'Rp ${_formatPrice(cart.total)}',
+                'Rp${_formatPrice(cart.total)}',
                 style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -165,7 +165,7 @@ class CartPage extends StatelessWidget {
                   const Icon(Icons.payment_outlined),
                   const SizedBox(width: 8),
                   Text(
-                    'Checkout · Rp ${_formatPrice(cart.total)}',
+                    'Checkout · Rp${_formatPrice(cart.total)}',
                     style: const TextStyle(
                         fontSize: 16, fontWeight: FontWeight.bold),
                   ),
@@ -281,13 +281,13 @@ class _CartItemCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    'Rp ${formatPrice(item.price)} / pcs',
+                    'Rp${formatPrice(item.price)} / pcs',
                     style: const TextStyle(
                         color: AppColors.textSecondary, fontSize: 12),
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    'Subtotal: Rp ${formatPrice(item.subtotal)}',
+                    'Subtotal: Rp${formatPrice(item.subtotal)}',
                     style: const TextStyle(
                       color: AppColors.primary,
                       fontWeight: FontWeight.bold,

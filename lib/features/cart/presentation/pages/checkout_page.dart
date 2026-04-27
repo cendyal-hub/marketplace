@@ -188,7 +188,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 // ── Detail harga ────────────────────────────
                 _PriceRow(
                   label: 'Subtotal',
-                  value: 'Rp ${_formatPrice(cart.total)}',
+                  value: 'Rp${_formatPrice(cart.total)}',
                 ),
                 const SizedBox(height: 8),
                 _PriceRow(
@@ -201,7 +201,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 const SizedBox(height: 12),
                 _PriceRow(
                   label: 'Total Bayar',
-                  value: 'Rp ${_formatPrice(cart.total)}',
+                  value: 'Rp${_formatPrice(cart.total)}',
                   isTotal: true,
                 ),
 
@@ -265,7 +265,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                         style: TextStyle(
                             fontWeight: FontWeight.w600, fontSize: 15)),
                     Text(
-                      'Rp ${_formatPrice(cart.total)}',
+                      'Rp${_formatPrice(cart.total)}',
                       style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -364,13 +364,13 @@ class _OrderItemRow extends StatelessWidget {
                         fontWeight: FontWeight.w600, fontSize: 14),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis),
-                Text('${item.quantity}x · Rp ${formatPrice(item.price)}',
+                Text('${item.quantity}x · Rp${formatPrice(item.price)}',
                     style: const TextStyle(
                         color: AppColors.textSecondary, fontSize: 12)),
               ],
             ),
           ),
-          Text('Rp ${formatPrice(item.subtotal)}',
+          Text('Rp${formatPrice(item.subtotal)}',
               style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 14,
