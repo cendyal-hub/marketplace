@@ -69,7 +69,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
       setState(() => _isProcessing = false);
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Aplikasi E-Money (DKG) tidak ditemukan. Mohon install terlebih dahulu.')),
+          const SnackBar(content: Text('Aplikasi D-Wallet tidak ditemukan. Mohon install terlebih dahulu.')),
         );
       }
     }
