@@ -42,7 +42,7 @@ class PaymentSuccessPage extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               Text(
-                'Pesanan dengan ID #$orderId telah berhasil dibayar menggunakan Dompet Kampus Global.',
+                'Pesanan dengan ID #$orderId telah berhasil dibayar menggunakan D-Wallet.',
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   color: AppColors.textSecondary,
