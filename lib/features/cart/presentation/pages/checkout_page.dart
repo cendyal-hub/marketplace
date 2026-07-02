@@ -1,9 +1,12 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:marketplace/core/constants/app_colors.dart';
 import 'package:marketplace/core/routes/app_router.dart';
 import 'package:marketplace/features/cart/domain/entities/cart_item.dart';
 import 'package:marketplace/features/cart/presentation/providers/cart_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:app_links/app_links.dart';
 
 class CheckoutPage extends StatefulWidget {
   const CheckoutPage({super.key});
@@ -14,22 +17,62 @@ class CheckoutPage extends StatefulWidget {
 
 class _CheckoutPageState extends State<CheckoutPage> {
   bool _isProcessing = false;
+  late AppLinks _appLinks;
+  StreamSubscription<Uri>? _linkSubscription;
+
+  @override
+  void initState() {
+    super.initState();
+    _initDeepLinks();
+  }
+
+  void _initDeepLinks() {
+    _appLinks = AppLinks();
+    _linkSubscription = _appLinks.uriLinkStream.listen((uri) {
+      if (uri.scheme == 'marketplace' && uri.host == 'payment-result') {
+        final status = uri.queryParameters['status'];
+        if (status == 'success') {
+          // Kosongkan cart melalui CartProvider
+          context.read<CartProvider>().clearCart();
+          setState(() => _isProcessing = false);
+          _showSuccessDialog();
+        } else {
+          setState(() => _isProcessing = false);
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Pembayaran dibatalkan atau gagal.')),
+          );
+        }
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _linkSubscription?.cancel();
+    super.dispose();
+  }
 
   Future<void> _processCheckout() async {
     setState(() => _isProcessing = true);
 
-    // Simulasi proses checkout (bisa diganti API call)
-    await Future.delayed(const Duration(seconds: 2));
+    final cart = context.read<CartProvider>();
+    final amount = cart.total;
+    // URL Scheme menuju e-money
+    // GoRouter membutuhkan path `/pay`. Jika dkg://pay, maka `pay` dianggap sebagai host dan path kosong.
+    // Oleh karena itu, kita gunakan dkg://app/pay agar terbaca path-nya sebagai `/pay`.
+    final url = Uri.parse('dkg://app/pay?amount=$amount&orderId=TB-88142&callback=marketplace://payment-result');
 
-    if (!mounted) return;
-
-    // Kosongkan cart melalui CartProvider → memanggil ClearCart use case
-    context.read<CartProvider>().clearCart();
-
-    setState(() => _isProcessing = false);
-
-    // Tampilkan notifikasi sukses lalu kembali ke dashboard
-    _showSuccessDialog();
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url, mode: LaunchMode.externalApplication);
+      // isProcessing tetap true sambil menunggu callback dari e-money via app_links
+    } else {
+      setState(() => _isProcessing = false);
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Aplikasi E-Money (DKG) tidak ditemukan. Mohon install terlebih dahulu.')),
+        );
+      }
+    }
   }
 
   void _showSuccessDialog() {

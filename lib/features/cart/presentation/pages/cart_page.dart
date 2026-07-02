@@ -1,6 +1,7 @@
 /// Cart Page — Presentation Layer
 /// Menampilkan semua item di cart secara reaktif
 /// UI tidak boleh mengakses repository langsung — hanya via CartProvider
+library;
 import 'package:flutter/material.dart';
 import 'package:marketplace/core/constants/app_colors.dart';
 import 'package:marketplace/core/routes/app_router.dart';

@@ -62,7 +62,7 @@ class ProductDetailPage extends StatelessWidget {
                             width: double.infinity,
                             height: 350,
                             fit: BoxFit.cover,
-                            errorBuilder: (_, __, ___) => _placeholderImage(),
+                            errorBuilder: (_, _, _) => _placeholderImage(),
                           )
                         : _placeholderImage(),
                   ),
